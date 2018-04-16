@@ -272,6 +272,7 @@ Scope.prototype.$$postDigest = function (fn) {
     this.$$postDigestQueue.push(fn);
 };
 
+//将多个监控值归为一组 其中一个有变化 就执行listener
 Scope.prototype.$watchGroup = function (watchFns, listenerFn) {
     var self = this;
     var newValues = new Array(watchFns.length);
@@ -324,7 +325,7 @@ Scope.prototype.$watchGroup = function (watchFns, listenerFn) {
     return function () {
         _.forEach(destroyFunctions, function (destroyFunction) {
             destroyFunction();
-        });
+        }); 
     };
 };
 
